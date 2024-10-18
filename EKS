@@ -1,0 +1,24 @@
+provider "aws" {
+  region = "ap-south-1"  # Your desired AWS region
+}
+
+module "eks" {
+  source          = "terraform-aws-modules/eks/aws"
+  cluster_name    = "my-eks-cluster"
+  cluster_version = "1.27"
+  subnets         = ["172.31.0.0/20", "172.31.32.0/20", "172.31.16.0/20"]  # Replace with actual subnets
+  vpc_id          = "172.31.0.0/16"                      # Replace with actual VPC ID
+
+  worker_groups = [
+    {
+      instance_type = "t2.medium"
+      asg_max_size  = 2
+    }
+  ]
+}
+
+# Output cluster details
+output "kubeconfig" {
+  description = "Kubeconfig output"
+  value       = module.eks.kubeconfig
+}
