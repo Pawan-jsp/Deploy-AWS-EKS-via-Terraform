@@ -45,11 +45,15 @@ The first step is to deploy an EC2 instance that will run Jenkins. This instance
 Once the EC2 instance is up and running, connect to it via SSH and configure Jenkins to automate the deployment of the EKS cluster.
 
 SSH into the EC2 instance:
+
 ssh -i path/to/your-key.pem ec2-user@your-ec2-instance-public-dns
+
 Open Jenkins and create a new pipeline job for deploying the EKS cluster.
 Use the Jenkinsfile provided in the repository to automate the deployment.
 After the EKS cluster is created, update the kube-config file to connect to the cluster:
+
 aws eks --region region-code update-kubeconfig --name cluster-name 4. Deploy NGINX on EKS Cluster
+
 With the EKS cluster up and running, you can deploy an NGINX application to the cluster using a Jenkins pipeline.
 
 Create a new Jenkins pipeline job for the deployment stage.
