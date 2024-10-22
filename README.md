@@ -52,7 +52,7 @@ Open Jenkins and create a new pipeline job for deploying the EKS cluster.
 Use the Jenkinsfile provided in the repository to automate the deployment.
 After the EKS cluster is created, update the kube-config file to connect to the cluster:
 
-aws eks --region region-code update-kubeconfig --name cluster-name 4. Deploy NGINX on EKS Cluster
+aws eks --region region-code update-kubeconfig --name cluster-name
 
 With the EKS cluster up and running, you can deploy an NGINX application to the cluster using a Jenkins pipeline.
 
